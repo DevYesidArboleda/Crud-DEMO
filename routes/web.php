@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('formulario', 'FileController@index');
+
+Route::post('public', 'FileController@store');

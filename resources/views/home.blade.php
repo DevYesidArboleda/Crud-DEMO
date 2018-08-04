@@ -36,7 +36,7 @@
                     <h4 class="modal-title">Cargar comprobante</h4>
                   </div>
                   <div class="modal-body">
-                    <form method="POST" class="form-horizontal" action="" enctype="multipart/form-data">
+                    <form method="POST" class="form-horizontal" action="/public" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
                           <label for="" class="col-md-4 control-label">Nuevo archivo</label>
