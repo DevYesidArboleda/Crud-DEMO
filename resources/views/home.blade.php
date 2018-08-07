@@ -36,8 +36,20 @@
                     <h4 class="modal-title">Cargar comprobante</h4>
                   </div>
                   <div class="modal-body">
-                    <form method="POST" class="form-horizontal" action="" enctype="multipart/form-data">
-                        {{ csrf_field() }}
+                    <form method="POST" class="form-horizontal" action="/public" enctype="multipart/form-data">
+                        {{ csrf_field() }}<!--- El helper csrf_field() imprime un campo de tipo hidden que contiene un hash utilizado para proteger a la aplicación contra ataques CSRF. -->
+                        <div class="form-group">
+                          <label for="codigo" class="col-md-4 control-label">codigo</label>
+                          <div class="col-md-6">
+                            <textarea type="text" class="form-control" name="codigo" placeholder="Codigo.."></textarea>
+
+                              @if ($errors->has('codigo'))
+                              <span style="color: red;">{{$errors->first('cofigo')}}</span>
+
+                              @endif
+
+                          </div>
+                        </div>
                         <div class="form-group">
                           <label for="" class="col-md-4 control-label">Nuevo archivo</label>
                           <div class="col-md-6">
