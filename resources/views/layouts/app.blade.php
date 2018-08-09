@@ -36,7 +36,9 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                       @if(Auth::user()->admin())
+                        <li><a href="{{ route('users.index') }}">Usuarios</a></li>
+                       @endif 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -70,8 +72,22 @@
                 </div>
             </div>
         </nav>
-
-        @yield('content')
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                   <h3 class="panel-title">@yield('title')</h3> 
+                </div>
+                <div class="panel-body">
+                    @include('flash::message')
+                    @yield('content')
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
     </div>
 
     <!-- Scripts -->

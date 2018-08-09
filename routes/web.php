@@ -27,3 +27,12 @@ Route::get('formulario', 'FileController@index');
 
 Route::post('public', 'FileController@store');
 
+//Panel de ADMON
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
+	Route::resource('users','UsersController');
+	Route::get('users/{id}/destroy', [
+            'uses' => 'UsersController@destroy',
+            'as' => 'admin.users.destroy'
+        ]);
+});
+

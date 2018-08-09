@@ -41,10 +41,10 @@
                         <div class="form-group">
                           <label for="codigo" class="col-md-4 control-label">codigo</label>
                           <div class="col-md-6">
-                            <textarea type="text" class="form-control" name="codigo" placeholder="Codigo.."></textarea>
+                            <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Codigo.." />
 
                               @if ($errors->has('codigo'))
-                              <span style="color: red;">{{$errors->first('cofigo')}}</span>
+                              <span style="color: red;">{{$errors->first('codigo')}}</span>
 
                               @endif
 
@@ -53,7 +53,7 @@
                         <div class="form-group">
                           <label for="" class="col-md-4 control-label">Nuevo archivo</label>
                           <div class="col-md-6">
-                            <input type="file" name="file" id="file" class="form-control"></input>
+                            <input type="file" name="file" id="file" class="form-control" />
                           </div>
                         </div>
                         <div class="form-group">
