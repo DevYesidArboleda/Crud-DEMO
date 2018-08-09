@@ -26,11 +26,12 @@ class UsersController extends Controller
         
     	$user = new User($request->all());
     	$user->password = bcrypt($request->password);
+        $user->type = $request->type;
     	$user->save();
 
          flash('Se ha registrado '.$user->name.' de forma exitosa.', 'success');
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('users.index');
 
     	
 
@@ -52,7 +53,7 @@ class UsersController extends Controller
 
         flash('El usuario '.$user->name.' ha sido borrado de forma exitosa.', 'danger');
         
-        return redirect() -> route('admin.users.index');
+        return redirect() -> route('users.index');
     }
 
     public function update(Request $request, $id){
@@ -64,7 +65,7 @@ class UsersController extends Controller
         $user->save();
 
     flash('El usuario '.$user->name.' ha sido editado de forma exitosa.', 'warning');
-          return redirect() -> route('admin.users.index');
+          return redirect() -> route('users.index');
      
     }
 }

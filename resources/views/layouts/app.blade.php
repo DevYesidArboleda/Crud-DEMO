@@ -34,6 +34,7 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                  @if(Auth::user())  
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                        @if(Auth::user()->admin())
@@ -69,6 +70,7 @@
                             </li>
                         @endif
                     </ul>
+                  @endif
                 </div>
             </div>
         </nav>

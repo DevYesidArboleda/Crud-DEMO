@@ -3,7 +3,7 @@
 
 @section('content')
   
-  {!! Form::open(['route' => ['admin.users.update', $user], 'method'=> 'PUT']) !!}
+  {!! Form::open(['route' => ['users.update', $user], 'method'=> 'PUT']) !!}
       <div class="form-group">
       	 
       	 {!! Form::label('name', 'Nombre')!!}
