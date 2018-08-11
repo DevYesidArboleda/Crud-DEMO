@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\File;
+use Laracasts\Flash\FlashServiceProvider;
 
 class FileController extends Controller
 {
@@ -39,6 +40,7 @@ public function store(Request $request){
 	     $fil->UrlFile=$file_route;
 	     $fil->save();
 	     //return $id;
+	     flash('Archivo cargado exitosamente', 'success');
 	     return back();
 	}
 				
