@@ -30,7 +30,7 @@ public function store(Request $request){
 	 
 	if($request->hasFile('file')){
 	    $fil= new File();
-	    $fil->codigo=$request->codigo;	
+	    $fil->Codigo=$request->codigo;	
 	    $file=$request->file('file');
 	     $id=time().$file->getClientOriginalName();
 	     $file->move(public_path().'/images/'.$id);
