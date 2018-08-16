@@ -39,6 +39,11 @@ Route::get('formulario', 'FileController@index');
 Route::post('public', 'FileController@store');
 
 //Panel de ADMON//
+Route::get('/ls', 'RegisterController@ruta');
+
+// E-mail verification
+Route::get('/register/verify/{code}', 'Auth\RegisterController@verify');
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
 	//USER//
 	Route::resource('users','UsersController');
