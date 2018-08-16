@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Notifications\VerifyEmail;
 
 class RegisterController extends Controller
 {
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -61,26 +62,39 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
-        if (User::count() == 0) {
+    {   
+        $data['token'] = str_random(25);
+        $user = User::create([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => bcrypt($data['password']),
+                    'type' => "miembro",
+                    'token'=>$data['token'],
+                ]);
 
-            return User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => bcrypt($data['password']),
-                'type' => "admin",
-            ]);
+        //Send confirmation code
+    \Mail::send('emails.confirmation_code', $data, function($message) use ($data) {
+        $message->to($data['email'], $data['name'])->subject('Por favor confirma tu correo');
+    });
 
-        } else {
-
-           return User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => bcrypt($data['password']),
-                'type' => "miembro",
-            ]); 
-
-        }
-        
+    return $user;  
     }
+  public function verify($code)
+{
+    $user = User::where('token', $code)->first();
+
+    if (! $user)
+        return redirect('/');
+
+    $user->confirmed = true;
+    $user->token = null;
+    $user->save();
+flash('Se ha confirmado su correo', 'success');
+    return redirect('/login');
+}
+
+    public function ruta(){
+        return view('emails.example');
+    }
+
 }
