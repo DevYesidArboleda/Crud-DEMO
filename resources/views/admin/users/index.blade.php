@@ -3,7 +3,9 @@
 
 @section('content')
        
-       <a href="{{ route('users.create')}}" class="btn btn-info">Registrar nuevo usuario</a>
+       <a href="{{ route('users.create')}}" class="btn btn btn-default">
+            <i class="icon-plus"></i>
+       </a>
        <br><br>
        <table class="table table-bordered">
             <thead>
@@ -30,11 +32,11 @@
             	   	  	</td>
             	   	  <td>
                              <a href="{{ route('users.edit', $user->id)}}"class="btn btn-warning">
-                              Editar</a>
+                              <i class="icon-edit"></i></a>
                               
                               <a href="{{ route('users.destroy', $user->id) }}" onClick="return confirm('¿Seguro
                                     que deseas eliminarlo')"class="btn btn-danger">
-                              Eliminar</a></td>
+                              <i class="icon-trash"></i></a></td>
             	   </tr>
 
             	@endforeach

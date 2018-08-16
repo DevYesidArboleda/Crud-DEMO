@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\City;
+use Laracasts\Flash\FlashServiceProvider;
 
 class CityController extends Controller
 {
@@ -13,7 +17,8 @@ class CityController extends Controller
      */
     public function index()
     {
-        //
+        $cities = City::orderBy('id','ASC')->paginate(5);
+         return view('admin.cities.index')->with('cities',$cities);
     }
 
     /**

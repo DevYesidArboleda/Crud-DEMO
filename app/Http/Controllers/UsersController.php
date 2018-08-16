@@ -49,11 +49,11 @@ class UsersController extends Controller
     public function destroy($id){
         
         $user = User::find($id);
-        $user -> delete();
+        $user->delete();
 
         flash('El usuario '.$user->name.' ha sido borrado de forma exitosa.', 'danger');
         
-        return redirect() -> route('users.index');
+        return redirect()->route('users.index');
     }
 
     public function update(Request $request, $id){

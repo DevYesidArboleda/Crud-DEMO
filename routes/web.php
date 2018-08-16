@@ -4,6 +4,28 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/work-with-us', function(){
+    return view('work_with_us');
+});
+
+Route::get('/affiliations/company', function(){
+    return view('coming_soon');
+});
+Route::get('/affiliations/social-security', function(){
+    return view('coming_soon');
+});
+Route::get('/affiliations/prepaid-medicine', function(){
+    return view('coming_soon');
+});
+Route::get('/affiliations/specialists-plan', function(){
+    return view('coming_soon');
+});
+Route::get('/affiliations/complementary-plan', function(){
+    return view('coming_soon');
+});
+Route::get('/affiliations/exequial-plan', function(){
+    return view('coming_soon');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

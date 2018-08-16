@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\Department;
+use Laracasts\Flash\FlashServiceProvider;
 
 class DepartmentController extends Controller
 {
@@ -13,7 +17,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::orderBy('id','ASC')->paginate(5);
+         return view('admin.departments.index')->with('departments',$departments);
     }
 
     /**

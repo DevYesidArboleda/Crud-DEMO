@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\Country;
+use Laracasts\Flash\FlashServiceProvider;
 
 class CountryController extends Controller
 {
@@ -13,7 +17,8 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
+        $countries = Country::orderBy('id','ASC')->paginate(5);
+         return view('admin.countries.index')->with('countries',$countries);
     }
 
     /**
@@ -23,7 +28,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.countries.create');
     }
 
     /**
@@ -34,7 +39,12 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $country = new Country($request->all());;
+        $country->save();
+
+         flash('Se ha registrado '.$country->name.' de forma exitosa.', 'success');
+
+        return redirect()->route('countries.index');
     }
 
     /**
@@ -56,7 +66,8 @@ class CountryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $country = Country::find($id);
+        return view('admin.countries.edit')->with('country', $country);
     }
 
     /**

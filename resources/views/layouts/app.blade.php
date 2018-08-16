@@ -12,6 +12,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Fontawesome-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <!-- BootstrapSwtch-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -38,8 +44,16 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                        @if(Auth::user()->admin())
-                        <li><a href="{{ route('users.index') }}">Usuarios</a></li>
-                       @endif 
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Panel de administrador <span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a href="{{ route('countries.index') }}">Paises</a></li>
+                            <li><a href="{{ route('departments.index') }}">Departamentos</a></li>
+                            <li><a href="{{ route('cities.index') }}">Ciudades</a></li>
+                            <li><a href="{{ route('users.index') }}">Usuarios</a></li>
+                          </ul>
+                        </li>
+                       @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -94,6 +108,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/js/bootstrap-switch.min.js"></script>
+    <script src="{{ asset('js/global.js') }}"></script>
     <script>
         $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
     </script>

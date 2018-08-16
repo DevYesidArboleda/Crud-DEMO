@@ -30,7 +30,9 @@
 
       <div class="form-group">
       	 
-      	 {!! Form::submit('Editar',['class' => 'btn btn-primary'])!!}
+      	 {!! Form::submit('Guardar',['class' => 'btn btn-primary'])!!}
+
+         <a href="javascript:history.back()" class="btn btn-default">Atras</a>
       </div>
 
 
