@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Department;
+use App\Country;
 use Laracasts\Flash\FlashServiceProvider;
 
 class DepartmentController extends Controller
@@ -28,7 +29,8 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        $countries = Country::orderBy('name','ASC')->pluck('name','id');
+        return view('admin.departments.create')->with('countries',$countries);
     }
 
     /**
@@ -39,7 +41,12 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $department = new Department($request->all());;
+        $department->save();
+
+         flash('Se ha registrado '.$department->name.' de forma exitosa.', 'success');
+
+        return redirect()->route('departments.index');
     }
 
     /**
@@ -61,7 +68,9 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $department = Department::find($id);
+        $countries = Country::orderBy('name','ASC')->pluck('name','id');
+        return view('admin.departments.edit')->with('department', $department)->with('countries',$countries);
     }
 
     /**
@@ -73,7 +82,15 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $department = Department::find($id);
+        $department->name = $request->name;
+        $department->country_id = $request->country_id;
+        $department->state = $request->state;
+
+        $department->save();
+        flash('Se ha actualizado '.$department->name.' de forma exitosa.', 'success');
+
+        return redirect()->route('departments.index');
     }
 
     /**

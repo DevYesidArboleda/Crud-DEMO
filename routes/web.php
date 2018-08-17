@@ -1,31 +1,23 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Front routes
+Route::get('/', [
+  'uses' => 'FrontController@index',
+  'as' => 'front.index'
+]);
 
 Route::get('/work-with-us', function(){
     return view('work_with_us');
 });
 
-Route::get('/affiliations/company', function(){
+Route::post('/work-with-us', 'FrontController@work_with_us');
+
+Route::get('/affiliations', function(){
     return view('coming_soon');
 });
-Route::get('/affiliations/social-security', function(){
-    return view('coming_soon');
-});
-Route::get('/affiliations/prepaid-medicine', function(){
-    return view('coming_soon');
-});
-Route::get('/affiliations/specialists-plan', function(){
-    return view('coming_soon');
-});
-Route::get('/affiliations/complementary-plan', function(){
-    return view('coming_soon');
-});
-Route::get('/affiliations/exequial-plan', function(){
-    return view('coming_soon');
-});
+
+Route::post('/affiliations', 'FrontController@affiliations');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -39,7 +31,7 @@ Route::get('formulario', 'FileController@index');
 Route::post('public', 'FileController@store');
 
 //Panel de ADMON//
-Route::get('/ls', 'RegisterController@ruta');
+Route::get('/ls', 'Auth\RegisterController@ruta');
 
 // E-mail verification
 Route::get('/register/verify/{code}', 'Auth\RegisterController@verify');

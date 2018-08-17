@@ -18,9 +18,15 @@
                   @foreach($cities as $city)
 
                      <tr>
-                          <td>{{ $city->department->name}}</td>
+                          <td>{{ $city->department ? $city->department->name : '' }}</td>
                           <td>{{ $city->name}}</td>
-                          <td>{{ $city->state}}</td>
+                          <td>
+                            @if($city->state == 1)
+                            <i class="icon-check" style="color: green;"></i>
+                           @else
+                            <i class="icon-remove-circle" style="color: red;"></i>
+                           @endif
+                          </td>
                           <td>
                              <a href="{{ route('cities.edit', $city->id)}}"class="btn btn-warning">
                               <i class="icon-edit"></i></a>

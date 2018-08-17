@@ -12,6 +12,15 @@
       	 {!! Form::text('name',$country->name, ['class' => 'form-control', 'placeholder' => 'Nombre completo','required'])!!}
 
       </div>
+      <div class="form-group">
+        {!! Form::label('state', 'Activado')!!}
+        <input type="checkbox" name="state" id="state" 
+          value="1"
+          class="checkbox_state"    
+          data-on-text="Si"
+          data-off-text="No"
+          data-size="mini">
+      </div>
 
       <div class="form-group">
       	 

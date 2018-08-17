@@ -16,13 +16,15 @@
 </head>
 <body>
 	<div id="app">
-		@include('layouts.navbar_public')
+		@include('front.template.partials.navbar')
 
     <div class="container">
         <div class="row">
+        	@include('flash::message')
           <div class="col-md-12 ">
           	<h3 class="text-center">Trabaja con nosotros</h3>
-            <form class="form-horizontal">
+            <form class="form-horizontal" method="POST" action="{{ url('/work-with-us') }}">
+            	{{ csrf_field() }}
             	<div class="form-body">
             		<div class="col-md-6">
             			<div class="form-group">
@@ -34,7 +36,7 @@
 	          						name="first_name" 
 	          						placeholder="nombre" 
 	          						type="text" 
-	          						class="form-control" />
+	          						class="form-control" required/>
 	            			</div>
 	            		</div>
 	            		<div class="form-group">
@@ -46,7 +48,7 @@
 	          						name="last_name" 
 	          						placeholder="apellido" 
 	          						type="text" 
-	          						class="form-control" />
+	          						class="form-control" required/>
 	            			</div>
 	            		</div>
 	            		<div class="form-group">
@@ -58,7 +60,7 @@
 	          						name="identification" 
 	          						placeholder="cedula" 
 	          						type="number" 
-	          						class="form-control" style = "width: 50%"/>
+	          						class="form-control" style = "width: 50%" required/>
 	            			</div>
 	            		</div>
 	            		<div class="form-group">
@@ -70,7 +72,7 @@
 	          						name="age" 
 	          						placeholder="edad" 
 	          						type="number" 
-	          						class="form-control" style = "width: 20%"/>
+	          						class="form-control" style = "width: 20%" required/>
 	            			</div>
 	            		</div>
 	            		<div class="form-group">
@@ -78,11 +80,11 @@
 	            				Dpto Recidencia
 	            			</label>
 	            			<div class="col-md-9">
-	            				<input id="last_name" 
-	          						name="last_name" 
+	            				<input id="departamento" 
+	          						name="departamento" 
 	          						placeholder="departamento" 
 	          						type="text" 
-	          						class="form-control" />
+	          						class="form-control" required/>
 	            			</div>
 	            		</div>
 	            		<div class="form-group">
@@ -90,11 +92,11 @@
 	            				Ciudad
 	            			</label>
 	            			<div class="col-md-9">
-	            				<input id="last_name" 
-	          						name="last_name" 
+	            				<input id="ciudad" 
+	          						name="ciudad" 
 	          						placeholder="ciudad" 
 	          						type="text" 
-	          						class="form-control" />
+	          						class="form-control" required/>
 	            			</div>
 	            		</div>
             		</div>
@@ -108,7 +110,7 @@
 	          						name="phone" 
 	          						placeholder="telefono" 
 	          						type="text" 
-	          						class="form-control" style = "width: 50%"/>
+	          						class="form-control" style = "width: 50%" required/>
 	            			</div>
 	            		</div>
 	            		<div class="form-group">
@@ -120,7 +122,7 @@
 	          						name="cellphone" 
 	          						placeholder="cellular" 
 	          						type="text" 
-	          						class="form-control" style = "width: 50%"/>
+	          						class="form-control" style = "width: 50%" required/>
 	            			</div>
 	            		</div>
 	            		<div class="form-group">
@@ -132,7 +134,7 @@
 	          						name="email" 
 	          						placeholder="cedula" 
 	          						type="email" 
-	          						class="form-control"/>
+	          						class="form-control" required/>
 	            			</div>
 	            		</div>
 	            		<div class="form-group">
@@ -144,7 +146,7 @@
 	          						name="profession" 
 	          						placeholder="profesion" 
 	          						type="text" 
-	          						class="form-control"/>
+	          						class="form-control" required/>
 	            			</div>
 	            		</div>
 	            		<div class="form-group">
@@ -156,7 +158,7 @@
 	          						name="expeciality" 
 	          						placeholder="especialidad" 
 	          						type="text" 
-	          						class="form-control" />
+	          						class="form-control" required/>
 	            			</div>
 	            		</div>
 	            		<div class="form-group">
@@ -164,11 +166,11 @@
 	            				trabajar como:
 	            			</label>
 	            			<div class="col-md-9">
-	            				<input id="last_name" 
-	          						name="last_name" 
+	            				<input id="trabajar_como" 
+	          						name="trabajar_como" 
 	          						placeholder="desea trabajar con nosotros como" 
 	          						type="text" 
-	          						class="form-control" />
+	          						class="form-control" required />
 	            			</div>
 	            		</div>
             		</div>
@@ -189,5 +191,9 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<script>
+        $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+    </script>
 </body>
 </html>

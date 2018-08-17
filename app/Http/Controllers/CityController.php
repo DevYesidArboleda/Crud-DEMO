@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\City;
+use App\Department;
 use Laracasts\Flash\FlashServiceProvider;
 
 class CityController extends Controller
@@ -28,7 +29,8 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+        $departments = Department::orderBy('name','ASC')->pluck('name','id');
+        return view('admin.cities.create')->with('departments',$departments);
     }
 
     /**
@@ -39,7 +41,12 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $city = new City($request->all());;
+        $city->save();
+
+         flash('Se ha registrado '.$city->name.' de forma exitosa.', 'success');
+
+        return redirect()->route('departments.index');
     }
 
     /**
@@ -61,7 +68,9 @@ class CityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $city = City::find($id);
+        $departments = Department::orderBy('name','ASC')->pluck('name','id');
+        return view('admin.cities.edit')->with('departments', $departments)->with('city',$city);
     }
 
     /**
@@ -73,7 +82,15 @@ class CityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $city = City::find($id);
+        $city->name = $request->name;
+        $city->departament_id = $request->departament_id;
+        $city->state = $request->state;
+
+        $city->save();
+        flash('Se ha actualizado '.$city->name.' de forma exitosa.', 'success');
+
+        return redirect()->route('cities.index');
     }
 
     /**

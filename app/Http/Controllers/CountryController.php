@@ -79,7 +79,14 @@ class CountryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $country = Country::find($id);
+        $country->name = $request->name;
+        $country->state = $request->state;
+
+        $country->save();
+        flash('Se ha actualizado '.$country->name.' de forma exitosa.', 'success');
+
+        return redirect()->route('countries.index');
     }
 
     /**

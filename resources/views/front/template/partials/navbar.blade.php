@@ -21,15 +21,7 @@
           <ul class="nav navbar-nav">
     			
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Afiliaciones <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="{{ url('/affiliations/company') }}">A nuestra empresa</a></li>
-                  <li><a href="{{ url('/affiliations/social-security') }}">Seguridad social</a></li>
-                  <li><a href="{{ url('/affiliations/prepaid-medicine') }}">Medicina prepagada</a></li>
-                  <li><a href="{{ url('/affiliations/specialists-plan') }}">Planes especialistas</a></li>
-                  <li><a href="{{ url('/affiliations/complementary-plan') }}">Planes complementario</a></li>
-                  <li><a href="{{ url('/affiliations/exequial-plan') }}">Planes exequiales</a></li>
-                </ul>
+               <a href="{{ url('/affiliations') }}"> Afiliaciones</a>
               </li>
               <li><a href="{{ url('/work-with-us') }}">Trabaja con nosotros</a></li>
           </ul>

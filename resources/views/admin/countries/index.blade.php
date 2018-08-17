@@ -18,7 +18,13 @@
 
             	   <tr>
             	   	  <td>{{ $country->name}}</td>
-            	   	  <td>{{ $country->state}}</td>
+            	   	  <td>
+                           @if($country->state == 1)
+                            <i class="icon-check" style="color: green;"></i>
+                           @else
+                            <i class="icon-remove-circle" style="color: red;"></i>
+                           @endif
+                          </td>
             	   	  <td>
                              <a href="{{ route('countries.edit', $country->id)}}"class="btn btn-warning">
                               <i class="icon-edit"></i></a>
