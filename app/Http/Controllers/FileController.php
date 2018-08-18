@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\File;
 use Laracasts\Flash\FlashServiceProvider;
+use App\Http\Requests\FileRequest;
 
 class FileController extends Controller
 {
@@ -17,7 +18,7 @@ class FileController extends Controller
 * @return Response
 */
 
-public function store(Request $request){
+public function store(FileRequest $request){
 
 	
 
@@ -39,9 +40,16 @@ public function store(Request $request){
 	     $file_route=time().$file->getClientOriginalName();
 	     $fil->UrlFile=$file_route;
 	     $fil->save();
+	     if ($fil) {
+	     	flash('Archivo cargado exitosamente', 'success');
+	     	return back();
+	     }else{
+	     	flash('Archivo cargado no acceptado (PNG, JPG)', 'danger');
+	     	return back();
+	     }
 	     //return $id;
-	     flash('Archivo cargado exitosamente', 'success');
-	     return back();
+	     
+	     
 	}
 				
 	

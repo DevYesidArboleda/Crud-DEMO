@@ -31,7 +31,7 @@ class UserRequest extends Request
             //
             'name' => 'min:4|max:120|required',
             'email' => 'min:4|max:250|required|unique:users',
-            'password' => 'min:4|max:120|required'z
+            'password' => 'min:4|max:120|required'
         ];
     }
 }
