@@ -3,9 +3,10 @@
 
 @section('content')
        
-       <a href="{{ route('users.create')}}" class="btn btn btn-default">
+       <a href="{{ route('users.create')}}" class="btn btn-default">
             <i class="icon-plus"></i>
        </a>
+       
        <br><br>
        <table class="table table-bordered">
             <thead>
@@ -31,12 +32,19 @@
                          @endif
             	   	  	</td>
             	   	  <td>
-                             <a href="{{ route('users.edit', $user->id)}}"class="btn btn-warning">
-                              <i class="icon-edit"></i></a>
-                              
-                              <a href="{{ route('users.destroy', $user->id) }}" onClick="return confirm('¿Seguro
-                                    que deseas eliminarlo')"class="btn btn-danger">
-                              <i class="icon-trash"></i></a></td>
+                     <a href="{{ route('users.edit', $user->id)}}"class="btn btn-xs btn-warning">
+                      <i class="icon-edit"></i></a>
+                      
+                      {!! Form::open(['route' => ['users.destroy', $user->id], 'method'=> 'DELETE']) !!}
+                      	<button class="btn btn-xs  btn-danger" >
+                      		<i class="icon-trash"></i>
+                      	</button>
+	                      <!--<a href="{{ route('users.destroy', $user->id) }}" onclick="return confirm('¿Seguro que deseas eliminarlo')" class="btn btn-danger">
+	                      	
+	                    	</a>-->
+                      {!! Form::close() !!}
+                      
+                    </td>
             	   </tr>
 
             	@endforeach

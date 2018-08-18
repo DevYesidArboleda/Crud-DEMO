@@ -73,3 +73,10 @@ Route::resource('customers','CustomerController');
             'as' => 'customers.destroy'
         ]);
 
+//AFILIADO//
+Route::resource('afiliados','AfiliadosController');
+    Route::get('afiliados/{id}/destroy', [
+            'uses' => 'AfiliadosController@destroy',
+            'as' => 'afiliados.destroy'
+        ]);
+

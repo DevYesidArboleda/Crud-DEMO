@@ -54,6 +54,7 @@
                           </ul>
                         </li>
                        @endif
+                        <li><a href="/afiliados">Afiliados</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

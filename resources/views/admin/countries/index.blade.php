@@ -26,12 +26,15 @@
                            @endif
                           </td>
             	   	  <td>
-                             <a href="{{ route('countries.edit', $country->id)}}"class="btn btn-warning">
+                             <a href="{{ route('countries.edit', $country->id)}}"class="btn btn-xs btn-warning">
                               <i class="icon-edit"></i></a>
                               
-                              <a href="{{ route('countries.destroy', $country->id) }}" onClick="return confirm('¿Seguro
-                                    que deseas eliminarlo')"class="btn btn-danger">
-                              <i class="icon-trash"></i></a></td>
+                              {!! Form::open(['route' => ['countries.destroy', $country->id], 'method'=> 'DELETE']) !!}
+                                <button class="btn btn-xs  btn-danger" >
+                                  <i class="icon-trash"></i>
+                                </button>
+                              {!! Form::close() !!}
+                            </td>
             	   </tr>
 
             	@endforeach

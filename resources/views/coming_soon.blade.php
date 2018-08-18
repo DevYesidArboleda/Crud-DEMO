@@ -80,7 +80,7 @@
                             </div>
                             <div class="form-group">
                               <label class="col-md-3 control-label">
-                                Dpto Recidencia
+                                Dpto Residencia
                               </label>
                               <div class="col-md-9">
                                 <input id="departamento" 
