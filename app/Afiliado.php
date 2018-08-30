@@ -11,9 +11,9 @@ class Afiliado extends Model
   	return $this->hasMany('App\Beneficiario');
   }
 
-  public function scopeSeach($q, $s) {
+  public function scopeSeach($query, $s) {
   	if ($s) {
-  		return $q->where('eps_actual', 'LIKE', "%$s%")->orWhere('arl_actual', 'LIKE', "%$s%");
+  		return $query->where('eps_actual', 'LIKE', "%$s%")->orWhere('arl_actual', 'LIKE', "%$s%")->orWhere('first_name', 'LIKE', "%$s%")->orWhere('last_name', 'LIKE', "%$s%");
   	}
   }
   

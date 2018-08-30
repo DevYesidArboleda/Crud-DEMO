@@ -5,7 +5,7 @@
 <div class="col-12 grid-margin">
   <div class="card">
     <div class="card-body">
-      <form class="form-sample" method="POST" action="{{ url('/afiliaciones') }}">
+      <form class="form-sample" method="POST" action="{{ url('/afiliados') }}">
         {{ csrf_field() }}
         <div class="row">
           <div class="col-md-6">
