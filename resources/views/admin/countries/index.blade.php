@@ -36,11 +36,11 @@
                     </td>
                   <td>
                            <a href="{{ route('countries.edit', $country->id)}}"class="btn btn-icons btn-sm btn-warning">
-                            <i class="icon-edit"></i></a>
+                            <i class="mdi mdi-pencil-box-outline"></i></a>
                             
                             {!! Form::open(['route' => ['countries.destroy', $country->id], 'method'=> 'DELETE']) !!}
                               <button class="btn btn-icons btn-sm  btn-danger" >
-                                <i class="icon-trash"></i>
+                                <i class="mdi mdi-delete"></i>
                               </button>
                             {!! Form::close() !!}
                           </td>
