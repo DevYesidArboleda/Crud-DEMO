@@ -1,60 +1,46 @@
-<nav class="navbar navbar-default navbar-static-top">
-  <div class="container">
-      <div class="navbar-header">
-
-          <!-- Collapsed Hamburger -->
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-              <span class="sr-only">Toggle Navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-          </button>
-
-          <!-- Branding Image -->
-          <a class="navbar-brand" href="{{ url('/') }}">
-              Inicio
-          </a>
-      </div>
-
-      <div class="collapse navbar-collapse" id="app-navbar-collapse">  
-          <!-- Left Side Of Navbar -->
-          <ul class="nav navbar-nav">
-    			
-              <li class="dropdown">
-               <a href="{{ url('/affiliations') }}"> Afiliaciones</a>
-              </li>
-              <li><a href="{{ url('/work-with-us') }}">Trabaja con nosotros</a></li>
+<header role="banner">
+  <div class="top-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-5">
+          <ul class="social list-unstyled">
+            <li><a href="#"><span class="fa fa-facebook"></span></a></li>
+            <li><a href="#"><span class="fa fa-twitter"></span></a></li>
+            <li><a href="#"><span class="fa fa-instagram"></span></a></li>
           </ul>
-
-          <!-- Right Side Of Navbar -->
-          <ul class="nav navbar-nav navbar-right">
-              <!-- Authentication Links -->
-              @if (Auth::guest())
-                  <li><a href="{{ route('login') }}">Login</a></li>
-                  <li><a href="{{ route('register') }}">Register</a></li>
-              @else
-                  <li><a href="{{ route('home') }}">dashboard</a></li>
-                  <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                          {{ Auth::user()->name }} <span class="caret"></span>
-                      </a>
-
-                      <ul class="dropdown-menu" role="menu">
-                          <li>
-                              <a href="{{ route('logout') }}"
-                                  onclick="event.preventDefault();
-                                           document.getElementById('logout-form').submit();">
-                                  Logout
-                              </a>
-
-                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                  {{ csrf_field() }}
-                              </form>
-                          </li>
-                      </ul>
-                  </li>
-              @endif
-          </ul>
+        </div>
+        <div class="col-md-6 col-sm-6 col-7 text-right">
+          <p class="mb-0">
+            <a href="{{ route('login') }}" class="cta-btn"><strong>Login</strong></a>
+          </p>
+        </div>
       </div>
+    </div>
   </div>
-</nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">Sistema <span>EPS</span> </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample05">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="/" class="nav-link active">Home</a>
+          </li>
+          <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown04">
+              <a href="#" class="dropdown-item">Institute</a>
+              <a href="#" class="dropdown-item">Departments</a>
+              <a href="#" class="dropdown-item">Services</a>
+            </div>
+          </li>
+          <li class="nav-item"><a href="#" class="nav-link">Nosotros</a></li>
+          <li class="nav-item"><a href="{{ url('/work-with-us') }}" class="nav-link">Trabaja con nosotros</a></li>
+          <li class="nav-item"><a href="{{ url('/contact') }}" class="nav-link">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

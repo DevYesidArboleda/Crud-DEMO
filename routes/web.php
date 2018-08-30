@@ -6,6 +6,10 @@ Route::get('/', [
   'as' => 'front.index'
 ]);
 
+Route::get('/contact', function(){
+    return view('front.contact');
+});
+
 Route::get('/work-with-us', function(){
     return view('work_with_us');
 });
