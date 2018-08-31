@@ -46,10 +46,7 @@ public function store(FileRequest $request){
 	     }else{
 	     	flash('Archivo cargado no acceptado (PNG, JPG)', 'danger');
 	     	return back();
-	     }
-	     //return $id;
-	     
-	     
+	     }    
 	}
 				
 	

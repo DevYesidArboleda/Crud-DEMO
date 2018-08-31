@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Afiliado;
 use App\Beneficiario;
+use App\File;
 
 class AfiliadosController extends Controller
 {
@@ -50,6 +51,22 @@ class AfiliadosController extends Controller
     	$beneficiario->parentesco = $request->parentesco;
     	$beneficiario->afiliado()->associate($afiliado);
     	$beneficiario->save();
+
+      if($request->hasFile('file')){
+        $fil= new File();
+        $fil->Codigo=$request->codigo;  
+        $file=$request->file('file');
+         $id=time().$file->getClientOriginalName();
+         $file->move(public_path().'/images/'.$id);
+         //dd($id);
+         $file_route=time().$file->getClientOriginalName();
+         $fil->UrlFile=$file_route;
+
+         $fil->afiliado()->associate($afiliado);
+
+         $fil->save(); 
+         flash('Se ha cargado el archivo de forma exitosa.', 'success');  
+      }
 
     	flash('Se ha registrado de forma exitosa.', 'success');
 

@@ -5,7 +5,7 @@
 <div class="col-12 grid-margin">
   <div class="card">
     <div class="card-body">
-      <form class="form-sample" method="POST" action="{{ url('/afiliados') }}">
+      <form class="form-sample" method="POST" action="{{ url('/afiliados') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row">
           <div class="col-md-6">
@@ -309,6 +309,31 @@
           </div>
           <div class="col-md-6">
 
+          </div>
+        </div>
+         <p class="card-description">
+          Archivo
+        </p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Codigo</label>
+              <div class="col-sm-9">
+                <input id="codigo" 
+                  name="codigo" 
+                  placeholder="codigo" 
+                  type="text" 
+                  class="form-control"  required/>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Archivo</label>
+              <div class="col-sm-9">
+                <input type="file" class="form-control-file" id="file" name="file" aria-describedby="fileHelp">
+              </div>
+            </div>
           </div>
         </div>
         <div class="row">
